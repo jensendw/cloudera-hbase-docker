@@ -1,0 +1,12 @@
+version: '2'
+services:
+  hbase-client:
+    image: jensendw/cloudera-hbase-docker
+    command: /bin/bash
+    environment:
+      - HA_ZOOKEEPER_QUORUM=hdp01dn0001.example.com:2181,hdp01dn0002.example.com:2181,hdp01dn0003.example.com:2181,hdp01dn0004.example.com:2181,hdp01dn0005.example.com:2181
+      - DFS_NAMENODE1_RPC_ADDRESS=hdp01mn0001.example.com:8020
+      - DFS_NAMENODE1_SERVICERPC_ADDRESS=hdp01mn0001.example.com:8022
+      - DFS_NAMENODE1_HTTP_ADDRESS=hdp01mn0001.example.com:50070
+      - DFS_NAMENODE1_HTTPS_ADDRESS=hdp01mn0001.example.com:50470
+      - HBASE_ZOOKEEPER_QUORUM=hdp01dn0002.example.com,hdp01dn0003.example.com,hdp01dn0005.example.com,hdp01dn0004.example.com,hdp01dn0001.example.com
