@@ -6,7 +6,11 @@ ARG DOCKERIZE_VERSION=v0.2.0
 ARG HBASE_VERSION=1.0.0+cdh5.5.0+269
 
 # Install required packages
-RUN yum install -y java wget
+RUN yum install -y wget
+
+# Download and install oracle JDK 1.8.0_11
+RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u11-b12/jdk-8u11-linux-x64.rpm"
+RUN yum -y localinstall jdk-8u11-linux-x64.rpm
 
 # Fetch and install the CDH repo
 RUN wget -O /tmp/cdh.rpm https://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm?_ga=1.149065204.314357562.1443746297
